@@ -9,8 +9,8 @@ interface UserSchema {
 }
 
 export class User {
-  props: UserSchema;
-  _id: string;
+  private props: UserSchema;
+  private _id: string;
 
   constructor(props: Replace<UserSchema, { createdAt?: Date }>, _id?: string) {
     this.props = {
@@ -24,6 +24,13 @@ export class User {
     return this._id;
   }
 
+  get name(): string {
+    return this.props.name;
+  }
+
+  set name(name: string) {
+    this.props.name = name;
+  }
   get email(): string {
     return this.props.email;
   }
